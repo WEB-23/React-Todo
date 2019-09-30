@@ -27,30 +27,53 @@ class App extends React.Component {
     };
   }
 
-  handleSubmit = () => {};
+  handleAdd = event => {
+    event.preventDefault();
 
-  handleChange = event => {
+    const addTodo = newTodo => {
+      this.setState({
+        todos: [...this.state.todos, newTodo]
+      });
+    };
+
+    // * making a new object and taking everything from current state and adding Date.now().
+    // * id can also be replaced by id: uuid() from the uuid library.
+    addTodo({ ...this.state, id: Date.now() });
+    this.setState({ task: "" });
+    console.log(this.state.todos);
+  };
+
+  deleteTodo = key => {
+    const filteredItems = this.state.todos.filter(item => {
+      return item.key !== key;
+      console.log("hi");
+    });
     this.setState({
-      task: event.target.value
+      todos: filteredItems
     });
   };
 
-  addTodo = newTodo => {
+  handleChange = event => {
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      [event.target.name]: event.target.value
     });
-    console.log(this.state.todos);
+    console.log(this.state.task);
+  };
+
+  finishedTodo = () => {
+    document.querySelector("todo").classList.add("finshed");
   };
 
   render() {
     return (
       <div className="App">
         <h2>What Do you need Todo?</h2>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo} />
         <TodoForm
           task={this.state.task}
-          addTodo={this.addTodo}
           handleChange={this.handleChange}
+          handleAdd={this.handleAdd}
+          finishedTodo={this.finishedTodos}
         />
       </div>
     );

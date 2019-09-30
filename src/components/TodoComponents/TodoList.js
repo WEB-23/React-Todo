@@ -7,13 +7,21 @@ import Todo from "./Todo.js";
 class TodoList extends React.Component {
   constructor(props) {
     super();
+    console.log(props);
   }
 
   render() {
     return (
       <ul>
         {this.props.todos.map(todo => {
-          return <Todo todo={todo} />;
+          return (
+            <Todo
+              key={todo.id}
+              todos={this.props.todos}
+              todo={todo}
+              deleteTodo={this.props.deleteTodo}
+            />
+          );
         })}
       </ul>
     );

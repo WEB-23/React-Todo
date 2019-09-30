@@ -1,15 +1,32 @@
 import React from "react";
-import { unlink } from "fs";
+import styles from "./Todo.css";
 
 class Todo extends React.Component {
   constructor(props) {
     super();
+    console.log(props.todo.key);
   }
 
   render() {
     return (
       <>
-        <li>{this.props.todo.task}</li>
+        <li
+          className="todo"
+          onClick={() => {
+            this.props.todo.completed = !this.props.todo.completed;
+            if (this.props.todo.completed === true) {
+              document.querySelector(".todo").classList.add("finished");
+            } else {
+              document.querySelector(".todo").classList.remove("finished");
+            }
+            console.log(this.props.todo);
+          }}
+        >
+          {this.props.todo.task}
+        </li>
+        <button onClick={() => this.props.deleteTodo(this.props.todo.key)}>
+          Remove
+        </button>
       </>
     );
   }

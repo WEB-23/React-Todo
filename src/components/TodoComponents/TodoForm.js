@@ -7,7 +7,7 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.addTodo}>
+      <form>
         <input
           type="text"
           placeholder="New Todo"
@@ -15,8 +15,7 @@ class TodoForm extends React.Component {
           value={this.props.task}
           onChange={this.props.handleChange}
         />
-        <button>Add</button>
-        <button>Remove</button>
+        <button onClick={this.props.handleAdd}>Add</button>
       </form>
     );
   }
