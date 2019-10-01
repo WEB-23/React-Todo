@@ -2,9 +2,8 @@ import React from "react";
 import styles from "./Todo.css";
 
 class Todo extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
-    console.log(props.deleteTodo);
   }
 
   render() {
@@ -12,19 +11,12 @@ class Todo extends React.Component {
       <>
         <li
           className="todo"
-          onClick={() => {
-            this.props.todo.completed = !this.props.todo.completed;
-            if (this.props.todo.completed === true) {
-              document.querySelector(".todo").classList.add("finished");
-            } else {
-              document.querySelector(".todo").classList.remove("finished");
-            }
-          }}
+          onClick={this.props.toggleItem, console.log(this.props.todo)}
         >
           {this.props.todo.task}
         </li>
-        <button onClick={() => this.props.deleteTodo(this.props.todo.key)}>
-          Remove
+        <button onClick={() => this.props.deleteTodo(this.props.todo.id)}>
+          X
         </button>
       </>
     );
