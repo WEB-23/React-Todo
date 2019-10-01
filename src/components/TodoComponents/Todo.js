@@ -4,7 +4,7 @@ import styles from "./Todo.css";
 class Todo extends React.Component {
   constructor(props) {
     super();
-    console.log(props.todo.key);
+    console.log(props.deleteTodo);
   }
 
   render() {
@@ -19,7 +19,6 @@ class Todo extends React.Component {
             } else {
               document.querySelector(".todo").classList.remove("finished");
             }
-            console.log(this.props.todo);
           }}
         >
           {this.props.todo.task}

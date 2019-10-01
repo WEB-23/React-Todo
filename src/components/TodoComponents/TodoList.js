@@ -7,7 +7,6 @@ import Todo from "./Todo.js";
 class TodoList extends React.Component {
   constructor(props) {
     super();
-    console.log(props);
   }
 
   render() {
@@ -16,10 +15,9 @@ class TodoList extends React.Component {
         {this.props.todos.map(todo => {
           return (
             <Todo
-              key={todo.id}
-              todos={this.props.todos}
               todo={todo}
               deleteTodo={this.props.deleteTodo}
+              key={todo.id}
             />
           );
         })}

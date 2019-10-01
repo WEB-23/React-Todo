@@ -45,8 +45,8 @@ class App extends React.Component {
 
   deleteTodo = key => {
     const filteredItems = this.state.todos.filter(item => {
-      return item.key !== key;
       console.log("hi");
+      return item.key !== key;
     });
     this.setState({
       todos: filteredItems
@@ -73,7 +73,6 @@ class App extends React.Component {
           task={this.state.task}
           handleChange={this.handleChange}
           handleAdd={this.handleAdd}
-          finishedTodo={this.finishedTodos}
         />
       </div>
     );
